@@ -7,16 +7,16 @@ Fixes: no fixes needed
 
 Observation: GameModel is very simple in comparison to the other files.
 
-## Prompt 2: 
+## Prompt 2: Building the Model
+Fill in GameModel.java. The model should track: the player's horizontal position, the alien formation (5 rows of 11), the player's bullet (one at a time), alien bullets, the score, and lives remaining (start with 3). Add logic to: move the player left and right, fire a player bullet if one isn't already in flight, advance the player's bullet each tick, move the alien formation right until the edge then down and reverse, fire alien bullets at random intervals, and detect collisions between bullets and aliens or the player. No Swing imports.
 
+Result: GameModel was updated with above directions.
 
-Result: 
+Fixes: no fixes needed 
 
-Fixes: 
+Observation: I am unsure if this is correct as it is not updating anything.
 
-Observation: 
-
-## Prompt 3:
+## Prompt 3: Building the View
 
 
 Result: 
