@@ -34,7 +34,7 @@ Fixes: No fixes needed
 
 Observation: I was able to play it as expected. I thought space invaders generate one spaceship at a time not the whole formation. 
 
-## Prompt 5:
+## Prompt 5: Basic Model Testing
 Create a separate file called ModelTester.java with a main method. It should create a GameModel, call its methods directly, and print PASS or FAIL for each check. Write tests for at least five behaviors: the player cannot move past the left or right edge, firing while a bullet is already in flight does nothing, a bullet that reaches the top is removed, destroying an alien increases the score, and losing all lives triggers the game-over state. No testing libraries — just plain Java.
 
 Result: created test file. Originally it failed scoring test. AI remade the testss to pass.
@@ -43,7 +43,7 @@ Fixes: no fixes needed from my side.
 
 Observation: AI run through tests and repeated changes on its own until it passed all tests.
 
-## Prompt 6:
+## Prompt 6: Drawing the Aliens
 I want to make the aliens look more like classic Invaders. In GameView.java, replace the green rectangles with drawings. Draw an alien as a 3-row grid: top row solid black, middle row two black squares separated by empty space, bottom row solid black. Leave a one-pixel gap between cells. Keep the overall width and height the same, and keep the aliens aligned in columns. The player should stay a green rectangle. Make sure the alien drawing code is inside the aliens' existing loop and doesn't break the layout or scale.
 
 Result: the aliens are now have more design to them
@@ -52,16 +52,17 @@ Fixes: no fixes needed, logic of the game was not touched
 
 Observation: only made modifications to the alien view.
 
-## Prompt 7:
+## Prompt 7: Adding Shield to Player
+In GameModel.java, add a shield system for the player. Give the player three shield segments (draw them as three small rectangles in front of the player). Each segment should take one hit from an alien bullet. When a segment is hit, it disappears. If all three are gone, the player loses a life. Remove the shield segments when the player loses a life. Do not change how bullets, aliens, or score behave — just add the shield segments to the player and update collisions.
 
+Result: Shields were added as expected.
 
-Result: 
+Fixes: I wanted the shields to take 3 hits first before losing a life. 
 
-Fixes: 
+Observation: A life was lost when the bullet hit the shield for the third time, not fourth.
 
-Observation: 
-
-## Prompt 8:
+## Prompt 8: Fixing Shield Life Depletion Bug
+Now the shield health and lives are not working together correctly. Fix it so that when an alien bullet hits a shield segment, that segment disappears, but the player does not lose a life. Only when all three shield segments are gone should the player lose a life. Ensure that the player's lives and shield segments are properly tracked and displayed. Do not add any new features — just fix the shield/life interaction.
 
 
 Result: 

@@ -14,6 +14,7 @@ public class GameModel {
     private final int playerHeight = 20;
     private int lives = 3;
     private int score = 0;
+    private int shields = 3; // 3 segments per life
     
     // Alien state
     private List<Alien> aliens;
@@ -37,6 +38,7 @@ public class GameModel {
         lives = 3;
         playerBullet = null;
         alienBullets.clear();
+        shields = 3;
         initAliens();
     }
 
@@ -123,13 +125,39 @@ public class GameModel {
             }
         }
 
-        // Alien bullets vs Player
+        // Alien bullets vs Player/Shields
         for (int i = 0; i < alienBullets.size(); i++) {
             Bullet b = alienBullets.get(i);
+            boolean hit = false;
+
+            // Check Shields first
+            if (shields > 0) {
+                for (int s = 0; s < shields; s++) {
+                    // Divide player width into 3 segments
+                    int sw = playerWidth / 3;
+                    int sx = playerX + s * sw;
+                    int sy = playerY - 15; // In front of player
+                    if (rectCollide(b.x - 2, b.y, 4, 10, sx, sy, sw - 2, 10)) {
+                        alienBullets.remove(i--);
+                        shields--;
+                        hit = true;
+                        if (shields == 0) {
+                            lives--;
+                            if (lives > 0) shields = 3; // Reset for next life
+                        }
+                        break;
+                    }
+                }
+            }
+
+            if (hit) continue;
+
+            // Check direct hit (if shields are somehow bypassed or already gone)
             if (rectCollide(b.x - 2, b.y, 4, 10, 
                            playerX, playerY, playerWidth, playerHeight)) {
                 alienBullets.remove(i--);
                 lives--;
+                if (lives > 0) shields = 3;
             }
         }
     }
@@ -150,6 +178,7 @@ public class GameModel {
     public List<Bullet> getAlienBullets() { return alienBullets; }
     public int getScore() { return score; }
     public int getLives() { return lives; }
+    public int getShields() { return shields; }
 
     // Helper Classes
     public static class Alien {

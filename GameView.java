@@ -23,6 +23,16 @@ public class GameView extends JPanel {
         g.setColor(Color.GREEN);
         g.fillRect(model.getPlayerX(), model.getPlayerY(), model.getPlayerWidth(), model.getPlayerHeight());
 
+        // Draw Shields
+        g.setColor(Color.CYAN); 
+        int numShields = model.getShields();
+        for (int s = 0; s < numShields; s++) {
+            int sw = model.getPlayerWidth() / 3;
+            int sx = model.getPlayerX() + s * sw;
+            int sy = model.getPlayerY() - 15;
+            g.fillRect(sx, sy, sw - 2, 10);
+        }
+
         // Draw Aliens
         for (GameModel.Alien alien : model.getAliens()) {
             // Draw as a 3x3 grid of cells with 1px gaps
