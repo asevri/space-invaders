@@ -17,13 +17,13 @@ Fixes: no fixes needed
 Observation: I am unsure if this is correct as it is not updating anything.
 
 ## Prompt 3: Building the View
+Fill in GameView.java. It should take a reference to the model and draw everything the player sees: the player, the alien formation, both sets of bullets, the score, and remaining lives. Show a centered game-over message when the game ends. The view should only read from the model — it must never change game state.
 
+Result: GameView was updated to draw everything the player sees.
 
-Result: 
+Fixes: No fixes needed
 
-Fixes: 
-
-Observation: 
+Observation: It rendered the player green and aliens on top of the screen. There was no instances of modified model such as updating score or moving bullet. Nothing moves in the game yet.
 
 ## Prompt 4:
 
