@@ -147,12 +147,14 @@ public class GameModel {
 
             if (hit) continue;
 
-            // Check direct hit - only happens if bullet missed shields or shields are gone
-            if (rectCollide(b.x - 2, b.y, 4, 10, 
-                           playerX, playerY, playerWidth, playerHeight)) {
-                alienBullets.remove(i--);
-                lives--;
-                if (lives > 0) shields = 3; // Restore shields for the new life
+            // Check direct hit - the player is ONLY vulnerable when all shields are gone
+            if (shields <= 0) {
+                if (rectCollide(b.x - 2, b.y, 4, 10, 
+                               playerX, playerY, playerWidth, playerHeight)) {
+                    alienBullets.remove(i--);
+                    lives--;
+                    if (lives > 0) shields = 3; // Restore shields for the new life
+                }
             }
         }
     }

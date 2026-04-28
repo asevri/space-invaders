@@ -70,17 +70,17 @@ Fixes: It needs fixing on the first 2 lives.
 
 Observation: The shields are not depleting correctly on the first 2 lives. 
 
-## Prompt 9:
+## Prompt 9: Fixing Shield Life Depletion Bug pt 2
+Fix the shield/life depletion bug. When an alien bullet hits a shield segment, that segment should disappear, but the player should not lose a life. Only when all three shield segments are gone should the player lose a life. Ensure that the player's lives and shield segments are properly tracked and displayed. Do not add any new features — just fix the shield/life interaction.
 
+Result: The shields are now depleting correctly! 
 
-Result: 
+Fixes: Now the issue is with taking damage from bullets. The damage is not recorded if bullet does not hit the shield segment.
 
-Fixes: 
+Observation: Bullet passes through player without taking damage. It only takes damage if it hits the shield.
 
-Observation: 
-
-## Prompt 10:
-
+## Prompt 10: Bullet Collision Bug
+Fix the bug where bullets pass through the player without taking damage. Create a hitbox for the player and make sure it encapsulates the player and shield segments. The hitbox should be centered on the player. Do not add any new features — just fix the bullet collision.
 
 Result: 
 
