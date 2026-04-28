@@ -125,35 +125,26 @@ public class GameModel {
             }
         }
 
-        // Alien bullets vs Player/Shields
+        // Alien bullets vs Player (Unified Hitbox including Shields)
         for (int i = 0; i < alienBullets.size(); i++) {
             Bullet b = alienBullets.get(i);
-            boolean hit = false;
+            
+            // Unified hitbox covers shields (-15px) and player body (+20px)
+            int hbX = playerX;
+            int hbY = playerY - 15;
+            int hbW = playerWidth;
+            int hbH = playerHeight + 15;
 
-            // Check Shields first - each segment takes one hit
-            if (shields > 0) {
-                for (int s = 0; s < shields; s++) {
-                    int sw = playerWidth / 3;
-                    int sx = playerX + s * sw;
-                    int sy = playerY - 15; 
-                    if (rectCollide(b.x - 2, b.y, 4, 10, sx, sy, sw - 2, 10)) {
-                        alienBullets.remove(i--);
-                        shields--;
-                        hit = true;
-                        break;
-                    }
-                }
-            }
-
-            if (hit) continue;
-
-            // Check direct hit - the player is ONLY vulnerable when all shields are gone
-            if (shields <= 0) {
-                if (rectCollide(b.x - 2, b.y, 4, 10, 
-                               playerX, playerY, playerWidth, playerHeight)) {
-                    alienBullets.remove(i--);
+            if (rectCollide(b.x - 2, b.y, 4, 10, hbX, hbY, hbW, hbH)) {
+                alienBullets.remove(i--);
+                
+                if (shields > 0) {
+                    // Bullets hit shields first
+                    shields--;
+                } else {
+                    // Once shields are gone, player takes direct damage
                     lives--;
-                    if (lives > 0) shields = 3; // Restore shields for the new life
+                    if (lives > 0) shields = 3; // Reset for next life
                 }
             }
         }

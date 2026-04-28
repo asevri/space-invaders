@@ -82,8 +82,8 @@ Observation: Bullet passes through player without taking damage. It only takes d
 ## Prompt 10: Bullet Collision Bug
 Fix the bug where bullets pass through the player without taking damage. Create a hitbox for the player and make sure it encapsulates the player and shield segments. The hitbox should be centered on the player. Do not add any new features — just fix the bullet collision.
 
-Result: 
+Result: Only GameModel was modified as expected.
 
-Fixes: 
+Fixes: no fixes needed.
 
-Observation: 
+Observation: The game now works as I wanted.
