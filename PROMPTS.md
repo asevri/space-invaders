@@ -25,14 +25,14 @@ Fixes: No fixes needed
 
 Observation: It rendered the player green and aliens on top of the screen. There was no instances of modified model such as updating score or moving bullet. Nothing moves in the game yet.
 
-## Prompt 4:
+## Prompt 4: Wiring the Controller 
+Fill in GameController.java. Add keyboard controls so the player can move left and right with the arrow keys and fire with the spacebar. Add a game loop using a Swing timer that updates the model each tick and redraws the view. Stop the loop when the game is over.
 
+Result: GameController was updated as per prompt.
 
-Result: 
+Fixes: No fixes needed
 
-Fixes: 
-
-Observation: 
+Observation: I was able to play it as expected. I thought space invaders generate one spaceship at a time not the whole formation. 
 
 ## Prompt 5:
 
