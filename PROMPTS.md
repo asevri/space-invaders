@@ -44,6 +44,42 @@ Fixes: no fixes needed from my side.
 Observation: AI run through tests and repeated changes on its own until it passed all tests.
 
 ## Prompt 6:
+I want to make the aliens look more like classic Invaders. In GameView.java, replace the green rectangles with drawings. Draw an alien as a 3-row grid: top row solid black, middle row two black squares separated by empty space, bottom row solid black. Leave a one-pixel gap between cells. Keep the overall width and height the same, and keep the aliens aligned in columns. The player should stay a green rectangle. Make sure the alien drawing code is inside the aliens' existing loop and doesn't break the layout or scale.
+
+Result: the aliens are now have more design to them
+
+Fixes: no fixes needed, logic of the game was not touched
+
+Observation: only made modifications to the alien view.
+
+## Prompt 7:
+
+
+Result: 
+
+Fixes: 
+
+Observation: 
+
+## Prompt 8:
+
+
+Result: 
+
+Fixes: 
+
+Observation: 
+
+## Prompt 9:
+
+
+Result: 
+
+Fixes: 
+
+Observation: 
+
+## Prompt 10:
 
 
 Result: 

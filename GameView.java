@@ -24,13 +24,24 @@ public class GameView extends JPanel {
         g.fillRect(model.getPlayerX(), model.getPlayerY(), model.getPlayerWidth(), model.getPlayerHeight());
 
         // Draw Aliens
-        g.setColor(new Color(150, 0, 255)); // Vibrant Purple
         for (GameModel.Alien alien : model.getAliens()) {
-            g.fillRect(alien.x, alien.y, model.getAlienWidth(), model.getAlienHeight());
-            // Small highlight for "WOW" effect
-            g.setColor(Color.WHITE);
-            g.drawRect(alien.x, alien.y, model.getAlienWidth(), model.getAlienHeight());
-            g.setColor(new Color(150, 0, 255));
+            // Draw as a 3x3 grid of cells with 1px gaps
+            // Using White for the "black squares" described (to be visible on black background)
+            g.setColor(Color.WHITE); 
+            int cellW = (model.getAlienWidth() - 2) / 3;
+            int cellH = (model.getAlienHeight() - 2) / 3;
+            int gap = 1;
+
+            for (int r = 0; r < 3; r++) {
+                for (int c = 0; c < 3; c++) {
+                    // Middle row has two squares separated by empty space (skip middle)
+                    if (r == 1 && c == 1) continue;
+                    
+                    int x = alien.x + c * (cellW + gap);
+                    int y = alien.y + r * (cellH + gap);
+                    g.fillRect(x, y, cellW, cellH);
+                }
+            }
         }
 
         // Draw Player Bullet
