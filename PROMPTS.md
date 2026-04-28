@@ -35,13 +35,13 @@ Fixes: No fixes needed
 Observation: I was able to play it as expected. I thought space invaders generate one spaceship at a time not the whole formation. 
 
 ## Prompt 5:
+Create a separate file called ModelTester.java with a main method. It should create a GameModel, call its methods directly, and print PASS or FAIL for each check. Write tests for at least five behaviors: the player cannot move past the left or right edge, firing while a bullet is already in flight does nothing, a bullet that reaches the top is removed, destroying an alien increases the score, and losing all lives triggers the game-over state. No testing libraries — just plain Java.
 
+Result: created test file. Originally it failed scoring test. AI remade the testss to pass.
 
-Result: 
+Fixes: no fixes needed from my side.
 
-Fixes: 
-
-Observation: 
+Observation: AI run through tests and repeated changes on its own until it passed all tests.
 
 ## Prompt 6:
 
