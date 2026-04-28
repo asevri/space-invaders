@@ -130,21 +130,16 @@ public class GameModel {
             Bullet b = alienBullets.get(i);
             boolean hit = false;
 
-            // Check Shields first
+            // Check Shields first - each segment takes one hit
             if (shields > 0) {
                 for (int s = 0; s < shields; s++) {
-                    // Divide player width into 3 segments
                     int sw = playerWidth / 3;
                     int sx = playerX + s * sw;
-                    int sy = playerY - 15; // In front of player
+                    int sy = playerY - 15; 
                     if (rectCollide(b.x - 2, b.y, 4, 10, sx, sy, sw - 2, 10)) {
                         alienBullets.remove(i--);
                         shields--;
                         hit = true;
-                        if (shields == 0) {
-                            lives--;
-                            if (lives > 0) shields = 3; // Reset for next life
-                        }
                         break;
                     }
                 }
@@ -152,12 +147,12 @@ public class GameModel {
 
             if (hit) continue;
 
-            // Check direct hit (if shields are somehow bypassed or already gone)
+            // Check direct hit - only happens if bullet missed shields or shields are gone
             if (rectCollide(b.x - 2, b.y, 4, 10, 
                            playerX, playerY, playerWidth, playerHeight)) {
                 alienBullets.remove(i--);
                 lives--;
-                if (lives > 0) shields = 3;
+                if (lives > 0) shields = 3; // Restore shields for the new life
             }
         }
     }

@@ -64,12 +64,11 @@ Observation: A life was lost when the bullet hit the shield for the third time, 
 ## Prompt 8: Fixing Shield Life Depletion Bug
 Now the shield health and lives are not working together correctly. Fix it so that when an alien bullet hits a shield segment, that segment disappears, but the player does not lose a life. Only when all three shield segments are gone should the player lose a life. Ensure that the player's lives and shield segments are properly tracked and displayed. Do not add any new features — just fix the shield/life interaction.
 
+Result: The shields on the last life behave as I wanted. 
 
-Result: 
+Fixes: It needs fixing on the first 2 lives.
 
-Fixes: 
-
-Observation: 
+Observation: The shields are not depleting correctly on the first 2 lives. 
 
 ## Prompt 9:
 
